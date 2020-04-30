@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2020_04_29_081731) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
     t.string "phone_number"
     t.string "postal_code"
     t.string "residence_address"

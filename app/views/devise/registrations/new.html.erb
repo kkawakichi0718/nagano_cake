@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
  
  <% if current_page?(new_end_user_registration_path) %>
-  <%= render "devise/registrations/end_users_new" %>
+  <%= render "devise/registrations/end_users_new", f: f %>
  <% end %>
 
   
