@@ -1,0 +1,14 @@
+<nav>
+     <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <%= link_to admin_root_path do %>
+               <i class="fas fa-birthday-cake"></i>
+              <% end %>
+            </li>
+            <li><%= link_to ' 商品一覧', class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' 会員一覧', class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' 注文履歴一覧',  class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' ジャンル一覧', class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+     </ul>
+</nav>
