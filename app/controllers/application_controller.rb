@@ -4,14 +4,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_current_user
 
     protected
-    def after_sign_in_path_for(resource)
-      if current_end_user
-        public_end_user_path(current_end_user.id)
-      else
-        admin_root_path
-      end
-    end
-
+    
     def after_sign_out_path_for(resource)
     	if current_end_user
         root_path
