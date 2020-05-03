@@ -16,6 +16,10 @@
     <% else %>
       <%= render "layouts/end_users" %>
     <% end %>
-      <%= yield %>
+    <div class="container">
+      <div class="body">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

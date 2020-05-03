@@ -1,0 +1,36 @@
+<h4>会員一覧</h4>
+<div class="row">
+	<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+        
+       <% @end_users.each do |end_user| %>
+        <tr>
+          <td><%= end_user.id %></td>
+          <td>
+          	<%= end_user.last_name %>
+          	<%= end_user.first_name %>	
+          </td>
+          <td><%= end_user.email %></td>
+          <td>
+            <% if end_user.is_unsubscribed == false %>
+               有効
+            <% else %>
+               退会済
+            <% end %>
+          </td>
+        </tr>
+       <% end %>
+        
+       
+      </tbody>
+    </table>
+</div>

@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  before_action :reject_user, only: [:create]
   # GET /resource/sign_in
   # def new
   #   super
@@ -18,10 +18,27 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def reject_user
+    @user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    if @user
+      if (@user.valid_password?(params[:end_user][:password]) && (@user.active_for_authentication? == false))
+        flash[:error] = "退会済みです。"
+        redirect_to new_end_user_session_path
+      end
+    else
+      flash[:error] = "必須項目を入力してください。"
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(resource)
+    public_end_user_path
+  end
+
 end

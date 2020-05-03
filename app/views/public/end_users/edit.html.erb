@@ -1,0 +1,45 @@
+<h4>登録情報編集</h4>
+
+<%= form_for(@end_user, url: { controller: :end_users , action: :update }) do |f| %>
+  <table>
+    <tr>
+      <td>名前</td>
+      <td>(姓)</td>
+      <td><%= f.text_field :last_name %></td>
+      <td>(名)</td>
+      <td><%= f.text_field :first_name %></td>
+    </tr>
+    <tr>
+    	<td>フリガナ</td>
+    	<td>(セイ)</td>
+    	<td><%= f.text_field :last_name_kana %></td>
+    	<td>(メイ)</td>
+    	<td><%= f.text_field :first_name_kana %></td>
+    </tr>
+    <tr>
+    	<td>メールアドレス</td>
+    	<td></td>
+    	<td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+    	<td>郵便番号</td>
+    	<td></td>
+    	<td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+    	<td>住所</td>
+    	<td></td>
+    	<td colspan="4"><%= f.text_field :residence_address, size: 48 %></td>
+    </tr>
+    <tr>
+    	<td>電話番号</td>
+    	<td></td>
+    	<td><%= f.text_field :phone_number %></td>
+    </tr>
+  </table>
+  <%= f.submit '変更内容を保存する' %>
+<% end %>
+  <%= link_to "退会する", public_end_user_confirm_path, class: "btn btn-danger" %>
+
+
+
