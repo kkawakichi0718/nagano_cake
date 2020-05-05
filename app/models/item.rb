@@ -5,7 +5,7 @@ class Item < ApplicationRecord
 	validates :price, presence: true
 
 	def taxed_price
-		price * 1.1
+		price * 1.10
 	end
 
 	def set_extra_informaton
