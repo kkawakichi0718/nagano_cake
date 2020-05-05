@@ -1,0 +1,39 @@
+<h3>商品新規登録</h3>
+
+<div class="row">
+  <%= form_for(@item, url: { controller: :items , action: :create }) do |f| %>
+	<div class="col-xs-4">
+		<%= f.attachment_field :image, class: "item_image" %>
+	</div>
+	<div class="col-xs-4">
+		<p>
+		    商品名
+		    <%= f.text_field :name %>
+		</p>
+		<p>
+		    商品説明
+		    <%= f.text_area :description %>
+		</p>
+		<p>
+			ジャンル
+			<%= f.collection_select :genre_name, Genre.all, :name, :name, include_blank: "選択してください" %>
+		</p>
+		<p>
+			税抜き価格
+			<%= f.number_field :price %>円
+		</p>
+		<p>
+			販売ステータス
+			<label>
+				<%= f.radio_button :is_sold, "false" %>
+			    販売中
+			</label>
+			<label>
+				<%= f.radio_button :is_sold, "true" %>
+				販売停止中
+			</label>
+		</p>
+    </div>
+</div>
+    <%= f.submit '新規登録', class: "btn btn-info" %>
+  <% end %>

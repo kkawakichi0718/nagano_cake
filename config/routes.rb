@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   	root 'items#top'
     resource :end_user, only: [:show, :edit]
     patch "/end_user" => "end_users#update"
-    resources :items,only: [:show]
+    resources :items,only: [:show, :index]
     get "end_user/confirm" => "end_users#confirm"
     put "/end_user" => "end_users#withdrawal", as: 'end_user_withdrawal'
   end
@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   namespace :admin do
   	root 'top#top'
   	resources :end_users, only: [:index]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items
   end
 end
