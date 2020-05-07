@@ -9,3 +9,39 @@ Admin.create!(
     email: 'kawakita@keisuke',
     password: 'kkkkkk',
 	)
+
+Genre.create!(
+	[
+	  {
+	  	name: 'food'
+	  },
+	  {
+	  	name: 'music'
+	  },
+	  {
+	  	name: 'sport'
+	  },
+	  {
+	  	name: 'drink'
+	  }
+	]
+	)
+
+Item.create!(
+    [
+    	{
+    		name: 'apple',
+    		description: '赤い',
+    		price: '60',
+    		genre_id: '1'
+    	},
+    	{
+    		name: 'fanta',
+    		description: 'ぶどう味',
+    		price: '100',
+    		genre_id: '4'
+    	}
+    ]
+
+	)
+

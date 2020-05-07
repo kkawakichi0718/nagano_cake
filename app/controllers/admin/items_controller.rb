@@ -20,6 +20,6 @@ class Admin::ItemsController < ApplicationController
 	private
 
 	def item_params
-		params.require(:item).permit(:image, :name, :description, :price, :genre_name, :is_sold)
+		params.require(:item).permit(:image, :name, :description, :price, :genre_id, :is_sold)
 	end
 end

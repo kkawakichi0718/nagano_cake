@@ -11,6 +11,7 @@ class EndUser < ApplicationRecord
   validates :postal_code, presence: true
   validates :residence_address, presence: true
   validates :is_unsubscribed, presence: false
+  has_many :cart_items, dependent: :destroy
   scope :active, -> {where(is_unsubscribed: false)}
 
   def active_for_authentication?

@@ -6,7 +6,7 @@
   　　　　　　　　<%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 	    	</div>
 	    	<div>
-			  <%= item.name %>
+			  <%= link_to item.name, public_item_path(item) %>
 		    </div>
 		    <div>
 			  ¥<%= item.taxed_price %>

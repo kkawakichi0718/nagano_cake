@@ -1,0 +1,29 @@
+<div class="row">		
+	    <div class="col-md-4">
+	    	<div>
+  　　　　　　　　<%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+	    	</div>
+	    </div>
+	    <div class="col-md-5">
+	    	<h3>
+			  <%= @item.name %>
+		    </h3>
+		    <div>
+		      <%= @item.description %>
+		    </div>
+		    <h3>
+			  ¥<%= @item.taxed_price %>
+			  <span style="font-size: 13px">(税込)</span>
+		    </h3>
+		     <% if end_user_signed_in? %>
+		      <%= form_for(@cart_item, url: { controller: :cart_items , action: :create }) do |f| %>
+		        <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], include_blank: "個数選択" %>
+		        <%= f.hidden_field :end_user_id, value: @end_user.id %>
+		        <%= f.hidden_field :item_id, value: @item.id %>
+		      
+		        <%= f.submit 'カートに入れる', class: "btn btn-info" %>
+		      <% end %>
+		     <% end %>
+        </div>
+</div>
+
