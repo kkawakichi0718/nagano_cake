@@ -19,8 +19,8 @@ Rails.application.routes.draw do
     resources :items,only: [:show, :index]
     get "end_user/confirm" => "end_users#confirm"
     put "/end_user" => "end_users#withdrawal", as: 'end_user_withdrawal'
-    resources :cart_items, only: [:index, :create,]
-    patch "/cart_items" => "cart_items#update"
+    resources :cart_items, only: [:index, :create, :update]
+    # patch "/cart_items" => "cart_items#update"
     delete "/cart_items/:id" => "cart_items#destroy_part", as: 'destroy_part_cart_items'
     delete "/cart_items" => "cart_items#destroy_all", as: 'destroy_all_cart_items'
   end
