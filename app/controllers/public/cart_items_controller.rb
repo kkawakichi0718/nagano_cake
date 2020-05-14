@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
 	def index
-		@items = CartItem.all
+		@items = current_end_user.cart_items
 		@total = @items.sum(&:subtotal)
 	end
 

@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 	validates :price, presence: true
     belongs_to :genre, optional: true
     has_many :cart_items, dependent: :destroy
+    has_many :order_details, dependent: :destroy
 
 	def taxed_price
 		(price * 110 /100.0).ceil

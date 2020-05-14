@@ -1,0 +1,94 @@
+<h4>注文履歴詳細</h4>
+<table>
+	<tr>
+		<th>
+			<strong>
+				購入者
+			</strong>
+		</th>
+		<td>
+			<%= @order.end_user.last_name %>
+          	<%= @order.end_user.first_name %>
+		</td>
+	</tr>
+	<tr>
+		<th>配送先</th>
+		<td>
+			<div>
+			    <%= @order.delivery_postal_code %>
+			    <%= @order.delivery_address %>
+			</div>
+			<div>
+				<%= @order.addressee %>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td>
+			<% if @order.payments_method == 0 %>
+               クレジットカード
+            <% elsif @order.payments_method == 1 %>
+               銀行振り込み
+            <% end %>
+		</td>
+	</tr>
+	<tr>
+		<th>注文ステータス</th>
+		<td>
+			<%= form_for(@order, url:  admin_order_path(@order)) do |f| %>
+			    <%= f.select :status, Order.statuses_i18n.keys.map { |k| [Order.statuses_i18n[k], k]} %>
+                <%= f.submit '更新', class: "btn btn-info" %>
+    	    <% end %>
+		</td>
+	</tr>
+</table>
+<table class="table table-striped", border="2">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @order_details.each do |order| %>
+      <tr>
+        <td>
+          	<%= order.item.name %>
+        </td>
+        <td>
+            <%= order.unit_price %>
+        </td>
+        <td>
+            <%= order.number %>
+        </td>
+        <td>
+          	<%= order.subtotal %>
+        </td>
+        <td>
+        	<%= form_for(order, url:  admin_order_detail_path(order)) do |f| %>
+        	   <%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map { |k| [OrderDetail.making_statuses_i18n[k], k]} %>
+                <%= f.submit '変更', class: "btn btn-info" %>
+    	    <% end %>
+        </td>
+      </tr>
+     <% end %>
+    </tbody>
+</table>
+<table>
+	<tr>
+		<th>商品合計</th>
+		<td><%= @total %>円</td>
+	</tr>
+	<tr>
+		<th>送料</th>
+		<td><%= @order.postage %>円</td>
+	</tr>
+	<tr>
+		<th>請求金額合計</th>
+		<td><%= @order.total_price %>円</td>
+	</tr>
+</table>

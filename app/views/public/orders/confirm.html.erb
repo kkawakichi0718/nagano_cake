@@ -1,0 +1,74 @@
+<h4>注文情報確認</h4>
+
+<div class="row">
+   <div class="col-xs-9">
+	<table class="table table-striped", border="2">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag cart_item.item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= cart_item.item.taxed_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal %></td>
+        </tr>
+       <% end %>
+      </tbody>
+    </table>
+   </div>
+   <div class="col-xs-3">
+   	<table>
+   		<tr>
+   			<th>送料</th>
+   			<td><%= @order.postage %></td>
+   		</tr>
+   		<tr>
+   			<th>商品合計</th>
+   			<td><%= @total %></td>
+   		</tr>
+   		<tr>
+   			<th>請求合計</th>
+   			<td><%= @bill %></td>
+   		</tr>
+   	</table>
+   </div>
+</div>
+<div class="row">
+
+<%= form_for(@order, url: { controller: :orders , action: :create }) do |f| %>
+    <div>
+    	<strong>支払い方法</strong>
+    	<% if @order.payments_method == 0 %>
+               クレジットカード
+        <% elsif @order.payments_method == 1 %>
+               銀行振り込み
+        <% end %>
+        <%= f.hidden_field :payments_method, value: @order.payments_method %>
+    </div>
+    <div>
+    	<strong>お届け先</strong>
+    	<div>
+    		<%= @order.delivery_postal_code %>
+    		<%= f.hidden_field :delivery_postal_code, value: @order.delivery_postal_code %>
+    	    <%= @order.delivery_address %>
+    	    <%= f.hidden_field :delivery_address, value: @order.delivery_address %>	
+    	</div>
+    	<div>
+    		<%= @order.addressee %>
+    		<%= f.hidden_field :addressee, value: @order.addressee %>
+    	</div>
+    </div>
+    <%= f.hidden_field :end_user_id, value: @end_user.id %>
+    <%= f.hidden_field :total_price, value: @bill %>
+    <%= f.submit '購入を確定する', class: "btn btn-success" %>
+<% end %>

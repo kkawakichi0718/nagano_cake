@@ -1,0 +1,29 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+
+  activerecord:
+    models:
+      order: 注文情報
+      order_detail: 注文詳細
+    attributes:
+      order:
+        status: 注文ステータス
+      order_detail:
+        making_status: 製作ステータス
+
+  enums:
+    order:
+      status:
+        wait: 入金待ち
+        confirm: 入金確認
+        started: 製作中
+        preparation: 発送準備中
+        completed: 発送済み
+    order_detail:
+      making_status:
+        cannot: 着手不可
+        wait: 製作待ち
+        started: 製作中
+        completed: 製作完了

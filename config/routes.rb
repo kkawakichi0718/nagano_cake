@@ -20,9 +20,13 @@ Rails.application.routes.draw do
     get "end_user/confirm" => "end_users#confirm"
     put "/end_user" => "end_users#withdrawal", as: 'end_user_withdrawal'
     resources :cart_items, only: [:index, :create, :update]
-    # patch "/cart_items" => "cart_items#update"
     delete "/cart_items/:id" => "cart_items#destroy_part", as: 'destroy_part_cart_items'
     delete "/cart_items" => "cart_items#destroy_all", as: 'destroy_all_cart_items'
+    resources :orders, only: [:new, :create]
+    post "orders/confirm" => "orders#confirm"
+    get "orders/confirm" => "orders#confirm"
+    get "orders/complete" => "orders#complete"
+    resources :addresses, only: [:create]
   end
 
   namespace :admin do
@@ -30,5 +34,7 @@ Rails.application.routes.draw do
   	resources :end_users, only: [:index]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
 end

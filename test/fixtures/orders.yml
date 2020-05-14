@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_user_id: 1
+  is_paid: false
+  total_price: 1
+  delivery_postal_code: MyString
+  delivery_address: MyString
+  payments: 1
+  is_ordered: 1
+  postage: 1
+
+two:
+  end_user_id: 1
+  is_paid: false
+  total_price: 1
+  delivery_postal_code: MyString
+  delivery_address: MyString
+  payments: 1
+  is_ordered: 1
+  postage: 1
