@@ -41,6 +41,7 @@ class Public::OrdersController < ApplicationController
                 unit_price: cart_item.item.taxed_price
                 )
         end
+        @items.destroy_all
         redirect_to public_orders_complete_path
     end
 

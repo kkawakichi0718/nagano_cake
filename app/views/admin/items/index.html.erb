@@ -2,32 +2,22 @@
 <%= link_to "商品新規登録", new_admin_item_path %>
 
 <div class="row">
-  	<table class="table table-hover table-inverse">
-			<thead>
-				<tr>
-					<th>商品ID</th>
-					<th>商品名</th>
-					<th>税抜価格</th>
-					<th>ジャンル</th>
-					<th>ステータス</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @items.each do |item| %>
-				<tr>
-					<td><%= item.id %></td>
-					<td><%= link_to item.name, admin_item_path(item.id) %></td>
-					<td><%= item.price %></td>
-					<td><%= item.genre.name %></td>
-					<td>											
-					    <% if item.is_sold == false %>
-                           販売中
-                        <% else %>
-                           売り切れ
-                        <% end %>
-                    </td>
-				</tr>
-				<% end %>
-			</tbody>
+	<table class="table table-hover table-inverse">
+		<thead>
+			<tr>
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル</th>
+				<th>ステータス</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @search_items %>
+			<%= render 'admin/items/item', items: @search_items %>
+			<% else %>
+			<%= render 'admin/items/item', items: @items %>
+			<% end %>
+		</tbody>
 	</table>
 </div>

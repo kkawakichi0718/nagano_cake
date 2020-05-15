@@ -70,5 +70,5 @@
     </div>
     <%= f.hidden_field :end_user_id, value: @end_user.id %>
     <%= f.hidden_field :total_price, value: @bill %>
-    <%= f.submit '購入を確定する', class: "btn btn-success" %>
+    <%= f.submit '購入を確定する', "data-confirm" => "本当に購入しますか？", class: "btn btn-success" %>
 <% end %>

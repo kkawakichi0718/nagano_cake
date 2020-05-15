@@ -22,10 +22,10 @@
           	<%= order.end_user.first_name %>
           </td>
           <td>
-            <%= order.end_user.cart_items.sum(:amount) %>
+            <%= order.order_details.sum(:number) %>
           </td>
           <td>
-          	<%= order.status %>
+          	<%= order.status_i18n %>
           </td>
         </tr>
        <% end %>
