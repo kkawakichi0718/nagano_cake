@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+    before_action :correct_user, {only: [:new]}
     def confirm
         @order = Order.new(order_params)
         @items = current_end_user.cart_items
@@ -53,5 +54,13 @@ class Public::OrdersController < ApplicationController
 
     def order_confirm_params
         params.require(:order).permit(:payments_method, :delivery_postal_code, :delivery_address, :addressee, :end_user_id, :total_price)
+    end
+
+    def correct_user
+      @items = current_end_user.cart_items
+      @total = @items.sum(&:subtotal)
+      if @total == 0
+        redirect_to public_cart_items_path
+      end
     end
 end

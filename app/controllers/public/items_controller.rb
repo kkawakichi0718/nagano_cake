@@ -9,7 +9,11 @@ class Public::ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		@cart_item = CartItem.new
-		@end_user = EndUser.find(current_end_user.id)
+		if end_user_signed_in?
+		  @end_user = EndUser.find(current_end_user.id)
+		else
+		  @end_user = Admin.where(email: 'kawakita@keisuke')
+		end
 	end
 
 end

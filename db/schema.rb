@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(version: 2020_05_10_132446) do
     t.string "addressee"
     t.integer "status", default: 0
     t.integer "postage", default: 800
+    t.integer "address_option", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "address_option"
   end
 
 end

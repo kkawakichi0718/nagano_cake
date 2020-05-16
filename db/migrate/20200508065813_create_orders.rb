@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :addressee
       t.integer :status, default: 0
       t.integer :postage, default: 800
+      t.integer :address_option, default: 0
 
       t.timestamps
     end
