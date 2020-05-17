@@ -11,7 +11,7 @@
     <li><%= link_to ' ジャンル一覧', admin_genres_path %></li>
     <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete %></li>
     <%= search_form_for @search, url: admin_items_path do |f| %>
-      <%= f.text_field :name_cont, placeholder: 'Search' %>
+      <%= f.text_field :name_cont, placeholder: 'search' %>
       <%= f.submit ('Search') %>
     <% end %>
   </ul>
