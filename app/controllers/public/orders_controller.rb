@@ -16,9 +16,13 @@ class Public::OrdersController < ApplicationController
             @order.delivery_address = @address.delivery_address
             @order.addressee = @address.addressee
         elsif params[:order][:address_option] == "2"
-            @order.delivery_postal_code = @order.delivery_postal_code
-            @order.delivery_address = @order.delivery_address
-            @order.addressee = @order.addressee
+            if params[:order][:delivery_postal_code].empty? || params[:order][:delivery_address].empty? || params[:order][:addressee].empty?
+               redirect_to new_public_order_path
+            else
+               @order.delivery_postal_code = @order.delivery_postal_code
+               @order.delivery_address = @order.delivery_address
+               @order.addressee = @order.addressee
+            end
         end
     end
 
