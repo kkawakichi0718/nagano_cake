@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     before_action :set_search
 
     protected
-    
+
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :residence_address, :is_unsubscribed])
     end

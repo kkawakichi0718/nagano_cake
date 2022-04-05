@@ -17,11 +17,11 @@ class Public::OrdersController < ApplicationController
             @order.addressee = @address.addressee
         elsif params[:order][:address_option] == "2"
             if params[:order][:delivery_postal_code].empty? || params[:order][:delivery_address].empty? || params[:order][:addressee].empty?
-               redirect_to new_public_order_path
+                redirect_to new_public_order_path
             else
-               @order.delivery_postal_code = @order.delivery_postal_code
-               @order.delivery_address = @order.delivery_address
-               @order.addressee = @order.addressee
+                @order.delivery_postal_code = @order.delivery_postal_code
+                @order.delivery_address = @order.delivery_address
+                @order.addressee = @order.addressee
             end
         end
     end
@@ -61,10 +61,10 @@ class Public::OrdersController < ApplicationController
     end
 
     def correct_user
-      @items = current_end_user.cart_items
-      @total = @items.sum(&:subtotal)
-      if @total == 0
-        redirect_to public_cart_items_path
-      end
+        @items = current_end_user.cart_items
+        @total = @items.sum(&:subtotal)
+        if @total == 0
+            redirect_to public_cart_items_path
+        end
     end
 end

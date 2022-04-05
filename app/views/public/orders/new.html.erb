@@ -1,5 +1,5 @@
 <h4>注文情報入力</h4>
-<div class="row"> 
+<div class="row">
   <%= form_with model: @order, url: { controller: :orders , action: :confirm }, local: true do |f| %>
     <h4>支払い方法</h4>
         <p>
@@ -13,7 +13,7 @@
     <h4>お届け先</h4>
     	<p>
     		<%= f.radio_button :address_option, 0 %>
-    		ご自身の住所 
+    		ご自身の住所
     		<div>
     			<div>
     				<%= @end_user.postal_code %>
@@ -50,7 +50,7 @@
     		</table>
     	</p>
         <%= f.hidden_field :end_user_id, value: @end_user.id %>
-    
+
     <%= f.submit '確認画面へ進む', class: "btn btn-info" %>
   <% end %>
  </div>

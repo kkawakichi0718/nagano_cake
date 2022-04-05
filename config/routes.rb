@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#top'
 
-  namespace :public do  	
+  namespace :public do
   	root 'items#top'
     resource :end_user, only: [:show, :edit]
     patch "/end_user" => "end_users#update"
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
     resources :addresses, only: [:create]
+    resources :genres, only: [:show]
   end
 
   namespace :admin do

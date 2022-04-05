@@ -1,5 +1,16 @@
 <h3>商品一覧</h3>
-<div class="row">		
+<div class="row">
+	<tr>
+	  <% @genres.each do |genre| %>
+	    <% if genre.is_valid == true %>
+	      <td>
+	      	<%= link_to genre.name, public_genre_path(genre.id) %>
+	      </td>
+	    <% end %>
+	  <% end %>
+    </tr>
+</div>
+<div class="row">
 	<% @items.each do |item| %>
 	    <div class="col-md-3">
 	    	<div>
